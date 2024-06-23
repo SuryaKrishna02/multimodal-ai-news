@@ -6,39 +6,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MultiModal AI Zone</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-color: #6200EA;
+            --secondary-color: #03DAC6;
+            --background-color: #121212;
+            --surface-color: #1E1E1E;
+            --on-surface-color: #FFFFFF;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: var(--background-color);
+            color: var(--on-surface-color);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
         header {
-            background-color: #f0f0f0;
-            padding: 10px;
-            text-align: right;
+            background-color: var(--surface-color);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        nav a {
+            color: var(--on-surface-color);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
         }
 
         main {
             flex-grow: 1;
-            padding: 20px;
+            padding: 40px;
         }
 
         .ai-zone {
-            border: 2px solid #000;
-            padding: 20px;
-            margin-bottom: 20px;
+            background-color: var(--surface-color);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
             text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .ai-zone:hover {
+            transform: translateY(-10px);
+        }
+
+        .ai-zone h1 {
+            color: var(--primary-color);
+            font-size: 3em;
+            margin-bottom: 20px;
         }
 
         .newsletters {
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
 
         .newsletters h2 {
             text-align: center;
+            color: var(--secondary-color);
+            font-size: 2.5em;
+            margin-bottom: 30px;
         }
 
         .newsletter-carousel {
@@ -52,60 +99,98 @@
             display: flex;
             overflow: hidden;
             width: 80%;
+            transition: transform 0.5s ease;
         }
 
         .newsletter-item {
-            flex: 0 0 calc(50% - 10px);
+            flex: 0 0 calc(50% - 20px);
             display: flex;
             align-items: center;
-            margin: 0 5px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 10px;
+            margin: 0 10px;
+            background-color: var(--surface-color);
+            border-radius: 15px;
+            padding: 20px;
             text-decoration: none;
-            color: inherit;
-            transition: transform 0.3s ease;
+            color: var(--on-surface-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .newsletter-item:hover {
             transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(3, 218, 198, 0.3);
         }
 
         .newsletter-item .pic {
-            width: 50px;
-            height: 50px;
-            background-color: #ddd;
-            margin-right: 10px;
-            border-radius: 5px;
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-color);
+            margin-right: 20px;
+            border-radius: 10px;
         }
 
         .carousel-button {
             background: none;
             border: none;
-            font-size: 24px;
+            font-size: 32px;
             cursor: pointer;
+            color: var(--secondary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-button:hover {
+            transform: scale(1.2);
         }
 
         .about-us {
             display: flex;
             justify-content: space-around;
+            flex-wrap: wrap;
         }
 
         .team-member {
             text-align: center;
+            background-color: var(--surface-color);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(3, 218, 198, 0.2);
         }
 
         .team-member .pic {
-            width: 100px;
-            height: 100px;
-            background-color: #ddd;
-            margin: 0 auto 10px;
+            width: 150px;
+            height: 150px;
+            background-color: var(--primary-color);
+            margin: 0 auto 20px;
+            border-radius: 50%;
         }
 
         footer {
-            background-color: #f0f0f0;
-            padding: 10px;
+            background-color: var(--surface-color);
+            padding: 20px;
             text-align: center;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
         }
     </style>
 </head>
@@ -119,9 +204,9 @@
     </header>
 
     <main>
-        <section class="ai-zone">
+        <section class="ai-zone floating">
             <h1>MultiModal AI Zone</h1>
-            <p>(Some big picture)</p>
+            <p>Explore the future of AI with us</p>
         </section>
 
         <section class="newsletters">
@@ -133,14 +218,21 @@
                         <div class="pic"></div>
                         <div>
                             <h3>May 2024</h3>
-                            <p>Small description</p>
+                            <p>Breakthrough in Natural Language Processing</p>
                         </div>
                     </a>
                     <a href="newsletter2.html" class="newsletter-item">
                         <div class="pic"></div>
                         <div>
                             <h3>April 2024</h3>
-                            <p>Small description</p>
+                            <p>AI in Healthcare: New Frontiers</p>
+                        </div>
+                    </a>
+                    <a href="newsletter3.html" class="newsletter-item">
+                        <div class="pic"></div>
+                        <div>
+                            <h3>March 2024</h3>
+                            <p>The Ethics of AI: A Deep Dive</p>
                         </div>
                     </a>
                 </div>
@@ -149,22 +241,29 @@
         </section>
 
         <section id="about-us" class="about-us">
-            <h2>About us</h2>
             <div class="team-member">
                 <div class="pic"></div>
-                <p>Short intro</p>
-                <p>x LinkedIn GitHub</p>
+                <h3>Dr. Jane Doe</h3>
+                <p>AI Research Lead</p>
+                <p>
+                    <a href="#" style="color: var(--secondary-color);">LinkedIn</a> |
+                    <a href="#" style="color: var(--secondary-color);">GitHub</a>
+                </p>
             </div>
             <div class="team-member">
                 <div class="pic"></div>
-                <p>Short intro</p>
-                <p>x LinkedIn GitHub</p>
+                <h3>John Smith</h3>
+                <p>ML Engineer</p>
+                <p>
+                    <a href="#" style="color: var(--secondary-color);">LinkedIn</a> |
+                    <a href="#" style="color: var(--secondary-color);">GitHub</a>
+                </p>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; Copyright</p>
+        <p>&copy; 2024 MultiModal AI Zone. All rights reserved.</p>
     </footer>
 
     <script>
@@ -186,6 +285,23 @@
         nextBtn.addEventListener('click', () => {
             currentIndex = (currentIndex + 1) % items.length;
             showItems(currentIndex);
+        });
+
+        // Intersection Observer for fade-in effect
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.team-member').forEach(member => {
+            member.style.opacity = 0;
+            member.style.transform = 'translateY(50px)';
+            member.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(member);
         });
     </script>
 </body>
