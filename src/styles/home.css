@@ -68,6 +68,11 @@ main {
 }
 
 .ai-zone {
+    background-image: url('../assets/multimodal.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Existing properties */
     background-color: var(--surface-color);
     border-radius: 20px;
     padding: 2rem;
@@ -76,6 +81,26 @@ main {
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+/* To ensure text remains readable, you might want to add a semi-transparent overlay */
+.ai-zone::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+    border-radius: 20px;
+    z-index: 1;
+}
+
+/* Ensure the content is above the overlay */
+.ai-zone > * {
+    position: relative;
+    z-index: 2;
+}
+
 
 .ai-zone:hover {
     transform: translateY(-10px);
