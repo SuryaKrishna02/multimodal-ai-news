@@ -12,34 +12,30 @@ document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
 
-// Function to update the impact meter color based on its value
-function updateImpactMeterColor(meter) {
-    const value = meter.value;
-    const hue = (value / 10) * 120; // 0 = red, 120 = green
-    meter.style.background = `hsl(${hue}, 100%, 50%)`;
+// Function to set up impact meters
+function setupImpactMeters() {
+    document.querySelectorAll('.impact-meter').forEach(meter => {
+        const impact = parseInt(meter.dataset.impact);
+        const bar = meter.querySelector('.meter-bar');
+        const width = (impact / 5) * 100;
+        const hue = (impact - 1) / 4 * 120; // 0 = red, 120 = green
+        bar.style.setProperty('--width', `${width}%`);
+        bar.style.setProperty('--color', `hsl(${hue}, 100%, 50%)`);
+    });
 }
 
-// Initialize and add event listeners to all impact meters
-document.querySelectorAll('.impact-meter input[type="range"]').forEach(meter => {
-    updateImpactMeterColor(meter);
-    meter.addEventListener('input', () => updateImpactMeterColor(meter));
-});
+// Function to set up difficulty levels
+function setupDifficultyLevels() {
+    document.querySelectorAll('.difficulty-level').forEach(level => {
+        const difficulty = level.dataset.difficulty;
+        const button = level.querySelector('.difficulty-btn');
+        button.textContent = difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
+        button.dataset.difficulty = difficulty;
+    });
+}
 
-// Function to add visual feedback when clicking on "Explore more" links
-document.querySelectorAll('.explore-more').forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent default link behavior
-        link.classList.add('clicked');
-        setTimeout(() => link.classList.remove('clicked'), 300);
-    });
-});
-
-// Add hover effect to difficulty level selects
-document.querySelectorAll('.difficulty-level select').forEach(select => {
-    select.addEventListener('mouseover', () => {
-        select.style.borderColor = 'var(--accent-color)';
-    });
-    select.addEventListener('mouseout', () => {
-        select.style.borderColor = 'var(--primary-color)';
-    });
+// Initialize everything when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    setupImpactMeters();
+    setupDifficultyLevels();
 });

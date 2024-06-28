@@ -6,6 +6,9 @@
     --surface-color: #1e1e1e; /* Dark gray */
     --on-surface-color: #ffffff; /* White text */
     --muted-color: #a0a0a0; /* Light gray */
+    --beginner-color: #4CAF50; /* Green */
+    --intermediate-color: #FFC107; /* Yellow */
+    --advanced-color: #F44336; /* Red */
 }
 
 * {
@@ -82,6 +85,7 @@ section h2 {
     font-size: 2em;
     margin-bottom: 1rem;
     text-shadow: 0 0 5px var(--accent-color);
+    text-align: center; /* Center-align section headings */
 }
 
 .item {
@@ -98,47 +102,89 @@ section h2 {
 
 .item-footer {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     margin-top: 1rem;
 }
 
-.explore-more {
+.explore-more, .learn-more {
     color: var(--secondary-color);
     text-decoration: none;
     font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
 .impact-meter {
     display: flex;
     align-items: center;
+    margin-top: 0.5rem;
 }
 
 .impact-meter span {
     margin-right: 0.5rem;
 }
 
-.impact-meter input[type="range"] {
+.impact-meter .meter-bar {
     width: 100px;
+    height: 10px;
+    background-color: #444; /* Darker background for contrast */
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.impact-meter .meter-bar::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    width: var(--width, 0%);
+    background-color: var(--color, #ddd);
 }
 
 .difficulty-level {
-    display: flex;
-    align-items: center;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
 }
 
-.difficulty-level span {
-    margin-right: 0.5rem;
-}
-
-.difficulty-level select {
-    background-color: var(--surface-color);
-    color: var(--on-surface-color);
-    border: 1px solid var(--primary-color);
+.difficulty-btn {
+    padding: 5px 10px;
+    border: none;
     border-radius: 5px;
-    padding: 0.2rem;
+    color: var(--on-surface-color);
+    font-weight: bold;
+    cursor: default;
 }
+
+.difficulty-btn[data-difficulty="beginner"] {
+    background-color: var(--beginner-color);
+}
+
+.difficulty-btn[data-difficulty="intermediate"] {
+    background-color: var(--intermediate-color);
+}
+
+.difficulty-btn[data-difficulty="advanced"] {
+    background-color: var(--advanced-color);
+}
+
+.disclaimer {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+.disclaimer h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5rem;
+}
+
+.disclaimer p {
+    font-size: 0.9em;
+    color: var(--muted-color);
+}
+
 
 footer {
     background-color: var(--surface-color);
@@ -148,7 +194,6 @@ footer {
     margin-top: 2rem;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .item-footer {
         flex-direction: column;
