@@ -182,17 +182,22 @@ main {
 
 .team-members {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
+    width: 100%;
+    max-width: 1000px; /* Adjust this value based on your design preferences */
 }
 
 .team-member {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: var(--surface-color);
     border-radius: 15px;
     padding: 1.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex: 0 1 300px;
+    width: calc(50% - 1rem); /* Two columns with gap consideration */
     max-width: 300px;
 }
 
@@ -205,8 +210,25 @@ main {
     width: 100px;
     height: 100px;
     background-color: var(--accent-color);
-    margin: 0 auto 1rem;
+    margin-bottom: 1rem;
     border-radius: 50%;
+}
+
+.member-info {
+    text-align: center;
+    width: 100%;
+}
+
+.member-info h3 {
+    font-size: 1.2em;
+    margin-bottom: 0.5rem;
+    word-wrap: break-word;
+}
+
+.member-info p {
+    font-size: 1em;
+    color: var(--muted-color);
+    margin-bottom: 0.5rem;
 }
 
 .social-links {
@@ -251,16 +273,10 @@ footer {
     animation: float 6s ease-in-out infinite;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
-    .team-members {
-        flex-direction: column;
-        align-items: center;
-    }
-
     .team-member {
-        flex: 1 1 100%;
-        max-width: 100%;
+        width: 100%; /* Full width on smaller screens */
+        max-width: 300px;
     }
 }
 
@@ -275,5 +291,22 @@ footer {
 
     .ai-zone h1 {
         font-size: 2em;
+    }
+
+    .team-member {
+        padding: 1rem;
+    }
+
+    .team-member .pic {
+        width: 80px;
+        height: 80px;
+    }
+
+    .member-info h3 {
+        font-size: 1.1em;
+    }
+
+    .member-info p {
+        font-size: 0.9em;
     }
 }
