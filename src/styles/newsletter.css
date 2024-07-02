@@ -55,22 +55,57 @@ main {
     margin: 0 auto;
 }
 
-.newsletter-header {
-    text-align: center;
+.ai-zone {
+    background-image: url('../assets/multimodal.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--surface-color);
+    border-radius: 20px;
+    padding: 2rem;
     margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
-.newsletter-header h1 {
+.ai-zone::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.ai-zone > * {
+    position: relative;
+    z-index: 2;
+}
+
+.ai-zone:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+}
+
+.ai-zone h1 {
     color: var(--primary-color);
     font-size: 2.5em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     text-shadow: 0 0 10px var(--primary-color);
 }
 
-.newsletter-header h2 {
+.ai-zone h2 {
     color: var(--secondary-color);
     font-size: 1.8em;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 8px var(--secondary-color);
 }
+
 
 section {
     background-color: var(--surface-color);
@@ -165,6 +200,22 @@ footer {
     margin-top: 2rem;
 }
 
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+
 @media (max-width: 768px) {
     .item-footer {
         flex-direction: column;
@@ -186,6 +237,14 @@ footer {
     }
     
     .newsletter-header h2 {
+        font-size: 1.5em;
+    }
+
+    .ai-zone h1 {
+        font-size: 2em;
+    }
+
+    .ai-zone h2 {
         font-size: 1.5em;
     }
 }
