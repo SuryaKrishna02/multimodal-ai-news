@@ -206,12 +206,13 @@ main {
     box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
 }
 
-.team-member .pic {
-    width: 100px;
-    height: 100px;
-    background-color: var(--accent-color);
-    margin-bottom: 1rem;
+.member-pic {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
     border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid var(--primary-color);
 }
 
 .member-info {
@@ -308,5 +309,10 @@ footer {
 
     .member-info p {
         font-size: 0.9em;
+    }
+
+    .member-pic {
+        width: 120px;
+        height: 120px;
     }
 }
