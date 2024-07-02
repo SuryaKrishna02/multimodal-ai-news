@@ -146,8 +146,7 @@ main {
 
 .newsletter-item {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
     background-color: var(--surface-color);
     border-radius: 15px;
     padding: 1.5rem;
@@ -156,7 +155,6 @@ main {
     color: var(--on-surface-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     font-size: 1.1em;
-    height: 250px;
 }
 
 .newsletter-item:hover {
@@ -164,12 +162,21 @@ main {
     box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
 }
 
-.newsletter-item .pic {
-    width: 100px;
-    height: 100px;
-    background-color: var(--secondary-color);
-    margin: 0 auto 1rem;
+.newsletter-pic {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
     border-radius: 10px;
+    margin-right: 1.5rem;
+}
+
+.newsletter-content {
+    flex: 1;
+}
+
+.newsletter-content h2 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
 }
 
 .about-us {
@@ -314,5 +321,15 @@ footer {
     .member-pic {
         width: 120px;
         height: 120px;
+    }
+
+    .newsletter-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .newsletter-pic {
+        margin-right: 0;
+        margin-bottom: 1rem;
     }
 }
